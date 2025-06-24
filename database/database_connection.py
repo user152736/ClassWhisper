@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from config.config import HOST, DATABASE, PORT, USER_NAME, PASSWORD
+from config.config import PG_DB, PG_HOST, PG_PORT, PG_PASS, PG_USER
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-engine = create_engine(f'postgresql+psycopg2://{USER_NAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}')
+engine = create_engine(f'postgresql+psycopg2://{PG_USER}:{PG_PASS}@{PG_HOST}:{PG_PORT}/{PG_DB}')
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
@@ -25,8 +25,3 @@ class StudentsTable(Base):
     parents_name = Column(String(50), nullable=False)
     parents_user_id = Column(String(50), nullable=False)
     student_score = Column(Integer, nullable=True)
-
-
-
-
-
