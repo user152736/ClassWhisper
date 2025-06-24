@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from config.config import PG_DB, PG_HOST, PG_PORT, PG_PASS, PG_USER
+from config.config import HOST,PORT,DATABASE, USER_NAME, PASSWORD
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-engine = create_engine(f'postgresql+psycopg2://{PG_USER}:{PG_PASS}@{PG_HOST}:{PG_PORT}/{PG_DB}')
+engine = create_engine(f'postgresql+psycopg2://{USER_NAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}')
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
