@@ -7,12 +7,15 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from dotenv import load_dotenv
-from handlers import start_router, add_group_router, group_list_router
+from handlers import start_router, add_group_router, group_list_router, callback_router, adding_student_router
 from helper_functions import start_up, shutdown, main_menu
+
+
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 dp = Dispatcher()
+
 
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -23,7 +26,8 @@ async def main() -> None:
     dp.shutdown.register(shutdown)
 
     # routers
-    dp.include_routers(start_router, add_group_router, group_list_router)
+    dp.include_routers(start_router, add_group_router, group_list_router, callback_router,
+                       adding_student_router)
 
     await dp.start_polling(bot)
 

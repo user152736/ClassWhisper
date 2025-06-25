@@ -16,3 +16,12 @@ def group_buttons():
 
     return button
 
+
+def share_contact():
+    button = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text='Telefon raqam yuborish', request_contact=True)]
+        ],
+        resize_keyboard=True,
+    )
+
