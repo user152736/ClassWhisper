@@ -6,4 +6,7 @@ class AddGroup(StatesGroup):
 class AddStudent(StatesGroup):
     student_name = State()
     parents_name = State()
-    parent_user_id = State()
+    parents_phone_number = State()
+
+class  DeletingUser(StatesGroup):
+    user_id = State()

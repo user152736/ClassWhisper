@@ -23,5 +23,10 @@ class StudentsTable(Base):
     group_name_id = Column(ForeignKey('group_name.id'))
     student_name = Column(String(50), nullable=False)
     parents_name = Column(String(50), nullable=False)
-    parents_user_id = Column(String(50), nullable=False)
+    parents_phone_number = Column(String(13), nullable=False)
     student_score = Column(Integer, nullable=True)
+
+
+    def save(self, session):
+        session.add(self)
+        session.commit()
